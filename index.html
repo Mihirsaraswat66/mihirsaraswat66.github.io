@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mihir Saraswat - Official Website</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts: Serif for headings, Sans-serif for body -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <!-- SEO -->
   <meta name="description" content="Official website of Mihir Saraswat, Youth Leader, Entrepreneur & District Council Coordinator, Rotaract District 3250." />
@@ -16,26 +16,32 @@
     :root {
       --brand: #004aad;
       --brand-light: #2d6cdf;
-      --bg: #f4f6f9;
-      --white: #fff;
-      --text: #222;
+      --brand-gradient: linear-gradient(135deg, #1e3c72, #2a5298);
+      --bg-light: #f9fbfd;
+      --bg-dark: #121214;
+      --white-light: #fff;
+      --white-dark: #1c1c1e;
+      --text-dark: #222;
       --text-light: #555;
-      --radius: 12px;
-      --shadow: 0 6px 18px rgba(0,0,0,0.08);
-
-      --transition-speed: 0.4s;
+      --text-dark-mode: #e1e1e1;
+      --text-light-mode: #aaa;
+      --radius: 14px;
+      --shadow-light: 0 8px 20px rgba(0,0,0,0.08);
+      --shadow-dark: 0 8px 25px rgba(0,0,0,0.7);
+      --transition-speed: 0.45s;
     }
 
-    /* Dark mode color variables */
+    /* Dark mode variables */
     [data-theme="dark"] {
-      --bg: #121214;
-      --white: #1e1e1e;
-      --text: #e1e1e1;
-      --text-light: #aaa;
-      --shadow: 0 6px 18px rgba(0,0,0,0.7);
+      --bg-light: var(--bg-dark);
+      --white-light: var(--white-dark);
+      --text-dark: var(--text-dark-mode);
+      --text-light: var(--text-light-mode);
+      --shadow-light: var(--shadow-dark);
     }
 
-    * {
+    /* Reset and Box sizing */
+    *, *::before, *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -43,57 +49,79 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.7;
+      transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
       scroll-behavior: smooth;
+      min-height: 100vh;
+      padding-top: 80px; /* space for sticky header */
     }
 
+    /* Dark mode body */
+    [data-theme="dark"] body {
+      color: var(--text-dark);
+      background: var(--bg-light);
+    }
+
+    /* Sticky header */
     header {
-      background: linear-gradient(135deg, var(--brand), var(--brand-light));
-      color: var(--white);
-      padding: 60px 20px;
-      text-align: center;
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      left: 0;
+      width: 100%;
+      background: var(--brand-gradient);
+      color: var(--white-light);
+      padding: 18px 24px;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      z-index: 1100;
+      font-family: 'Merriweather', serif;
+      user-select: none;
       transition: background-color var(--transition-speed) ease;
     }
 
+    [data-theme="dark"] header {
+      background: linear-gradient(135deg, #1b2a6a, #274275);
+    }
+
     header h1 {
-      font-size: 2.5rem;
       font-weight: 700;
+      font-size: 2.4rem;
+      letter-spacing: 1.2px;
+      margin-bottom: 6px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
     }
 
     header p {
-      margin-top: 8px;
       font-size: 1.1rem;
-      opacity: 0.9;
-    }
-
-    /* Dark mode header */
-    [data-theme="dark"] header {
-      background: linear-gradient(135deg, #1e40af, #3b82f6);
-      color: var(--white);
+      font-weight: 600;
+      opacity: 0.85;
+      letter-spacing: 0.6px;
     }
 
     main {
       max-width: 1100px;
-      margin: 30px auto 60px;
-      padding: 0 20px;
+      margin: auto;
+      padding: 0 24px 60px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
     }
 
+    /* Card styles */
     .card {
-      background: var(--white);
+      background: var(--white-light);
       border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: var(--shadow);
-      margin-bottom: 24px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color var(--transition-speed);
+      padding: 28px 32px;
+      box-shadow: var(--shadow-light);
+      transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        background-color var(--transition-speed);
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(40px);
+      will-change: transform, opacity;
     }
 
     .card.visible {
@@ -102,153 +130,225 @@
     }
 
     .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+      transform: translateY(-6px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
     }
 
-    /* Dark mode card */
     [data-theme="dark"] .card {
-      background: var(--white);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.7);
+      background: var(--white-dark);
+      box-shadow: var(--shadow-dark);
     }
 
     h2 {
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      font-size: 2rem;
       color: var(--brand);
-      margin-bottom: 12px;
+      margin-bottom: 18px;
+      letter-spacing: 0.4px;
       transition: color var(--transition-speed);
     }
 
     [data-theme="dark"] h2 {
-      color: #93c5fd;
+      color: #7ea6f6;
     }
 
     p {
-      margin-bottom: 12px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-bottom: 18px;
       color: var(--text-light);
+      line-height: 1.6;
       transition: color var(--transition-speed);
     }
 
     [data-theme="dark"] p {
-      color: #ccc;
+      color: var(--text-light-mode);
     }
 
+    /* Hero image with subtle shadow and rounded corners */
     .hero-img {
       width: 100%;
-      max-height: 400px;
+      max-height: 420px;
       object-fit: cover;
       border-radius: var(--radius);
-      margin-top: 16px;
+      margin-top: 20px;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.12);
       user-select: none;
       pointer-events: none;
+      transition: filter 0.3s ease;
     }
 
+    [data-theme="dark"] .hero-img {
+      filter: brightness(0.85);
+    }
+
+    /* Articles list */
     ul {
       list-style: none;
-      padding: 0;
+      padding-left: 0;
+      margin-top: 6px;
     }
 
     ul li {
-      margin-bottom: 10px;
+      margin-bottom: 14px;
+      font-size: 1.05rem;
     }
 
-    a {
+    ul li a {
+      color: var(--brand);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1.5px solid transparent;
+      transition: border-color 0.25s ease, color 0.25s ease;
+      position: relative;
+    }
+
+    ul li a:hover,
+    ul li a:focus {
+      color: var(--brand-light);
+      border-color: var(--brand-light);
+      outline: none;
+    }
+
+    [data-theme="dark"] ul li a {
+      color: #a3bffa;
+    }
+
+    [data-theme="dark"] ul li a:hover,
+    [data-theme="dark"] ul li a:focus {
+      color: #d0d9ff;
+      border-color: #d0d9ff;
+    }
+
+    /* Contact grid */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      gap: 20px;
+      margin-top: 8px;
+    }
+
+    .contact-grid div {
+      background: var(--bg-light);
+      padding: 16px 22px;
+      border-radius: var(--radius);
+      box-shadow: inset 0 0 18px rgba(0,0,0,0.02);
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      font-weight: 600;
+      word-wrap: break-word;
+      transition: background-color var(--transition-speed), color var(--transition-speed);
+    }
+
+    [data-theme="dark"] .contact-grid div {
+      background: #222;
+      color: var(--text-light-mode);
+      box-shadow: none;
+    }
+
+    .contact-grid a {
       color: var(--brand);
       text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s ease;
+      border-bottom: 1.5px solid transparent;
+      transition: border-color 0.25s ease, color 0.25s ease;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .contact-grid a:hover,
+    .contact-grid a:focus {
       color: var(--brand-light);
+      border-color: var(--brand-light);
+      outline: none;
     }
 
-    [data-theme="dark"] a {
-      color: #60a5fa;
+    [data-theme="dark"] .contact-grid a {
+      color: #90aaff;
     }
 
-    [data-theme="dark"] a:hover {
-      color: #93c5fd;
+    [data-theme="dark"] .contact-grid a:hover,
+    [data-theme="dark"] .contact-grid a:focus {
+      color: #cad4ff;
+      border-color: #cad4ff;
     }
 
+    /* Dark mode toggle button */
+    .toggle-btn {
+      position: fixed;
+      top: 16px;
+      right: 24px;
+      background: var(--white-light);
+      border: none;
+      border-radius: 26px;
+      padding: 10px 20px;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--brand);
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      transition: background-color 0.4s ease, color 0.4s ease;
+      user-select: none;
+      z-index: 1200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toggle-btn:hover,
+    .toggle-btn:focus {
+      background-color: var(--brand-light);
+      color: white;
+      outline: none;
+    }
+
+    [data-theme="dark"] .toggle-btn {
+      background: #333;
+      color: #a3bffa;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.8);
+    }
+
+    [data-theme="dark"] .toggle-btn:hover,
+    [data-theme="dark"] .toggle-btn:focus {
+      background-color: #7ea6f6;
+      color: #fff;
+    }
+
+    /* Icon for dark mode toggle */
+    .toggle-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      transition: transform 0.4s ease;
+    }
+
+    /* Footer styling */
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 24px 16px;
       font-size: 0.9rem;
+      font-family: 'Inter', sans-serif;
       color: #777;
-      margin-top: 20px;
+      border-top: 1px solid #ddd;
       user-select: none;
       transition: color var(--transition-speed);
     }
 
     [data-theme="dark"] footer {
-      color: #999;
+      border-top: 1px solid #444;
+      color: #aaa;
     }
 
-    /* Responsive Layout for Contact */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 12px;
-    }
-
-    .contact-grid div {
-      background: var(--bg);
-      padding: 14px;
-      border-radius: var(--radius);
-      transition: background-color var(--transition-speed);
-      word-break: break-word;
-    }
-
-    [data-theme="dark"] .contact-grid div {
-      background: #2a2a2a;
-    }
-
-    /* Button Styles */
-    .toggle-btn {
-      position: fixed;
-      top: 16px;
-      right: 20px;
-      background: var(--white);
-      border: none;
-      border-radius: 20px;
-      padding: 8px 16px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      box-shadow: var(--shadow);
-      transition: background-color 0.3s ease, color 0.3s ease;
-      z-index: 1100;
-    }
-
-    .toggle-btn:hover {
-      background-color: var(--brand);
-      color: var(--white);
-    }
-
-    [data-theme="dark"] .toggle-btn {
-      background: #333;
-      color: #eee;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.7);
-    }
-    [data-theme="dark"] .toggle-btn:hover {
-      background-color: #60a5fa;
-      color: #fff;
-    }
-
-    /* Smooth scroll animation */
-    @media (prefers-reduced-motion: no-preference) {
-      .card {
-        will-change: transform, opacity;
-      }
-    }
-    
-    @media (max-width: 600px) {
+    /* Responsive typography */
+    @media (max-width: 700px) {
       header h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
       }
       header p {
         font-size: 1rem;
+      }
+      main {
+        padding: 0 16px 50px;
       }
     }
   </style>
@@ -259,30 +359,39 @@
     <p>Youth Leader • Entrepreneur • District Council Coordinator, Rotaract District 3250</p>
   </header>
 
-  <button class="toggle-btn" aria-label="Toggle dark mode">Dark Mode</button>
+  <button class="toggle-btn" aria-label="Toggle dark mode" title="Toggle dark mode" aria-pressed="false">
+    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M12 3a9 9 0 000 18 9 9 0 000-18zm0 16a7 7 0 110-14 7 7 0 010 14z"/>
+    </svg>
+    Dark Mode
+  </button>
 
   <main>
-    <section class="card">
-      <h2>About Mihir</h2>
-      <p>Born 26 April 1997 in Giridih, Jharkhand, <strong>Mihir Saraswat</strong> is a youth leader, social entrepreneur and community organiser. He currently serves as District Council Coordinator (2025–26) of <em>Rotaract District 3250</em>, and is co-owner of MM Medicine & MM Ayurveda. Mihir has held several district and club roles and won multiple awards for service and PR leadership.</p>
-      <img src="https://open.substack.com/public/images/mihir-profile.jpg" alt="Mihir Saraswat" class="hero-img" onerror="this.style.display='none'">
+    <section class="card" tabindex="0" aria-labelledby="about-title">
+      <h2 id="about-title">About Mihir</h2>
+      <p>
+        Born 26 April 1997 in Giridih, Jharkhand, <strong>Mihir Saraswat</strong> is a youth leader, social entrepreneur and community organiser.
+        He currently serves as District Council Coordinator (2025–26) of <em>Rotaract District 3250</em>, and is co-owner of MM Medicine & MM Ayurveda.
+        Mihir has held several district and club roles and won multiple awards for service and PR leadership.
+      </p>
+      <img src="https://open.substack.com/public/images/mihir-profile.jpg" alt="Portrait of Mihir Saraswat" class="hero-img" loading="lazy" onerror="this.style.display='none'">
     </section>
 
-    <section class="card">
-      <h2>Featured articles & press</h2>
+    <section class="card" tabindex="0" aria-labelledby="articles-title">
+      <h2 id="articles-title">Featured articles &amp; press</h2>
       <ul>
         <li><a href="https://open.substack.com/pub/mihir65/p/from-giridih-to-district-leadership" target="_blank" rel="noopener noreferrer">From Giridih to District Leadership — Substack</a></li>
         <li><a href="https://medium.com/@exportsaraswat/mihir-saraswat-is-a-dynamic-young-leader-from-giridih-jharkhand-a44fafab1f99" target="_blank" rel="noopener noreferrer">A Dynamic Young Leader — Medium</a></li>
       </ul>
     </section>
 
-    <section class="card">
-      <h2>Contact</h2>
+    <section class="card" tabindex="0" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
       <div class="contact-grid">
-        <div>Email: <a href="mailto:exportsaraswat@gmail.com">exportsaraswat@gmail.com</a></div>
-        <div>Phone: <a href="tel:+916203671813">+91 62036 71813</a></div>
-        <div>Instagram: <a href="https://instagram.com/mihir_saraswat" target="_blank" rel="noopener noreferrer">@mihir_saraswat</a></div>
-        <div>LinkedIn: <a href="https://www.linkedin.com/in/mihir-saraswat-79b077200" target="_blank" rel="noopener noreferrer">Mihir Saraswat</a></div>
+        <div>Email: <a href="mailto:exportsaraswat@gmail.com" aria-label="Email Mihir Saraswat">exportsaraswat@gmail.com</a></div>
+        <div>Phone: <a href="tel:+916203671813" aria-label="Call Mihir Saraswat">+91 62036 71813</a></div>
+        <div>Instagram: <a href="https://instagram.com/mihir_saraswat" target="_blank" rel="noopener noreferrer" aria-label="Mihir Saraswat Instagram">@mihir_saraswat</a></div>
+        <div>LinkedIn: <a href="https://www.linkedin.com/in/mihir-saraswat-79b077200" target="_blank" rel="noopener noreferrer" aria-label="Mihir Saraswat LinkedIn">Mihir Saraswat</a></div>
       </div>
     </section>
   </main>
@@ -295,36 +404,66 @@
     // Set current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Dark mode toggle
+    // Dark mode toggle logic
     const toggleBtn = document.querySelector('.toggle-btn');
-    const currentTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let currentTheme = localStorage.getItem('theme');
 
-    // Apply saved theme or system preference on page load
+    // Initialize theme based on user preference or saved theme
     if (currentTheme === 'dark' || (!currentTheme && prefersDark)) {
       document.documentElement.setAttribute('data-theme', 'dark');
       toggleBtn.textContent = 'Light Mode';
+      toggleBtn.setAttribute('aria-pressed', 'true');
+      toggleBtn.insertAdjacentHTML('afterbegin', `
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="transform: rotate(40deg);">
+          <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>
+        </svg>`);
+    } else {
+      toggleBtn.setAttribute('aria-pressed', 'false');
+    }
+
+    // Update toggle button SVG icon helper
+    function updateToggleIcon(isDark) {
+      toggleBtn.innerHTML = '';
+      if (isDark) {
+        toggleBtn.textContent = 'Light Mode';
+        toggleBtn.insertAdjacentHTML('afterbegin', `
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="transform: rotate(40deg);">
+            <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>
+          </svg>`);
+        toggleBtn.setAttribute('aria-pressed', 'true');
+      } else {
+        toggleBtn.textContent = 'Dark Mode';
+        toggleBtn.insertAdjacentHTML('afterbegin', `
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 3a9 9 0 000 18 9 9 0 000-18zm0 16a7 7 0 110-14 7 7 0 010 14z"/>
+          </svg>`);
+        toggleBtn.setAttribute('aria-pressed', 'false');
+      }
     }
 
     toggleBtn.addEventListener('click', () => {
-      if (document.documentElement.getAttribute('data-theme') === 'dark') {
+      let isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDark) {
         document.documentElement.removeAttribute('data-theme');
         localStorage.setItem('theme', 'light');
-        toggleBtn.textContent = 'Dark Mode';
+        updateToggleIcon(false);
       } else {
         document.documentElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
-        toggleBtn.textContent = 'Light Mode';
+        updateToggleIcon(true);
       }
     });
 
-    // Scroll animation for cards
+    // Scroll reveal animation for cards
     function revealOnScroll() {
       const cards = document.querySelectorAll('.card');
       const windowHeight = window.innerHeight;
+      const revealPoint = 140;
+
       cards.forEach(card => {
-        const cardTop = card.getBoundingClientRect().top;
-        const revealPoint = 150;
+        let cardTop = card.getBoundingClientRect().top;
+
         if (cardTop < windowHeight - revealPoint) {
           card.classList.add('visible');
         }
@@ -333,6 +472,7 @@
 
     window.addEventListener('scroll', revealOnScroll);
     window.addEventListener('load', revealOnScroll);
+
   </script>
 </body>
 </html>
