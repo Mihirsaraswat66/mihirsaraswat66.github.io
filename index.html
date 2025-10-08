@@ -4,235 +4,263 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rotaract Club of United Ranchi</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
   <style>
     :root {
       --primary: #c11f57;
-      --secondary: #f3f4f6;
+      --secondary: #f5f7fa;
       --text: #222;
       --light-text: #555;
       --white: #fff;
       --radius: 14px;
-      --shadow: 0 6px 18px rgba(0,0,0,0.08);
+      --shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
     }
 
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body{
-      font-family:'Inter',sans-serif;
-      background:var(--secondary);
-      color:var(--text);
-      line-height:1.6;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--secondary);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    /* ---------- HEADER ---------- */
-    header{
-      background: linear-gradient(120deg,var(--primary),#d44a78);
-      color:var(--white);
-      text-align:center;
-      padding:70px 20px 80px;
-      position:relative;
-      overflow:hidden;
+    /* HEADER */
+    header {
+      background: linear-gradient(120deg, var(--primary), #d6336c);
+      color: var(--white);
+      text-align: center;
+      padding: 80px 20px 100px;
+      position: relative;
+      overflow: hidden;
     }
-    header::after{
-      content:"";
-      position:absolute;
-      bottom:-50px;
-      left:0;right:0;
-      height:100px;
-      background:var(--secondary);
-      clip-path: ellipse(75% 100% at 50% 100%);
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: -60px; left: 0; right: 0;
+      height: 120px;
+      background: var(--secondary);
+      clip-path: ellipse(70% 100% at 50% 100%);
     }
-    header img.logo{
-      height:90px;
-      margin-bottom:15px;
+    header img.logo {
+      width: 110px;
+      height: auto;
+      margin-bottom: 15px;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
     }
-    header h1{
-      font-size:2.8rem;
-      font-weight:700;
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
     }
-    header p.tagline{
-      margin-top:6px;
-      font-size:1.2rem;
-      opacity:.95;
-    }
-
-    main{
-      max-width:1200px;
-      margin:0 auto;
-      padding:0 20px;
-    }
-    section{
-      margin:80px 0;
-    }
-    h2.section-title{
-      text-align:center;
-      font-size:2rem;
-      margin-bottom:40px;
-      color:var(--primary);
+    header p.tagline {
+      font-size: 1.2rem;
+      margin-top: 6px;
+      opacity: 0.95;
     }
 
-    /* ---------- MISSION ---------- */
-    .mission{
-      background:var(--white);
-      padding:40px;
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      text-align:center;
-      font-size:1.1rem;
-      max-width:900px;
-      margin:0 auto;
+    main { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    section { margin: 90px 0; }
+    h2.section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 50px;
+      color: var(--primary);
     }
 
-    /* ---------- PROJECTS ---------- */
-    .projects-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:24px;
+    /* 3D CARD EFFECTS */
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .project-card{
-      background:var(--white);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      overflow:hidden;
-      transition:transform .3s ease,box-shadow .3s ease;
-    }
-    .project-card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 10px 25px rgba(0,0,0,.15);
-    }
-    .project-card img{
-      width:100%;
-      height:200px;
-      object-fit:cover;
-    }
-    .project-card .content{
-      padding:18px;
-    }
-    .project-card h3{
-      margin-bottom:6px;
-      color:var(--primary);
-    }
-    .project-card p{
-      font-size:.95rem;
-      color:var(--light-text);
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
     }
 
-    /* ---------- TEAM ---------- */
-    .team-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:28px;
-      justify-items:center;
-    }
-    .member-card{
-      background:var(--white);
-      padding:24px 16px;
-      border-radius:var(--radius);
-      text-align:center;
-      box-shadow:var(--shadow);
-      width:260px;
-    }
-    .member-card img{
-      width:120px;
-      height:120px;
-      border-radius:50%;
-      object-fit:cover;
-      border:4px solid var(--primary);
-      margin-bottom:12px;
-    }
-    .member-card h3{
-      font-size:1.2rem;
-      margin-bottom:4px;
-    }
-    .member-card p.role{
-      font-size:.95rem;
-      color:var(--light-text);
+    /* Mission Section */
+    .mission {
+      padding: 40px;
+      font-size: 1.1rem;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
     }
 
-    /* ---------- CONTACT ---------- */
-    footer{
-      background:#111;
-      color:#ddd;
-      text-align:center;
-      padding:40px 20px;
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
     }
-    footer p{
-      margin:4px 0;
-      font-size:.9rem;
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
     }
-    footer a{
-      color:#fff;
-      text-decoration:none;
+    .project-card .content {
+      padding: 20px;
     }
-    footer a:hover{text-decoration:underline;}
+    .project-card h3 {
+      margin-bottom: 6px;
+      color: var(--primary);
+    }
+    .project-card p {
+      font-size: 0.95rem;
+      color: var(--light-text);
+    }
+
+    /* Team Section */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 32px;
+      justify-items: center;
+    }
+    .member-card {
+      padding: 24px 16px;
+      text-align: center;
+      width: 260px;
+    }
+    .member-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--primary);
+      margin-bottom: 14px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+    .member-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+    }
+    .member-card p.role {
+      font-size: 0.95rem;
+      color: var(--light-text);
+    }
+
+    /* Media Section */
+    .media-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .media-card {
+      padding: 20px;
+    }
+    .media-card a {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .media-card a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      background: #111;
+      color: #ddd;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    footer p {
+      margin: 4px 0;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+    footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- Header -->
   <header>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Rotaract_Emblem.png/200px-Rotaract_Emblem.png" alt="Rotaract Logo" class="logo"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Rotaract_Emblem.svg/240px-Rotaract_Emblem.svg.png" alt="Rotaract Logo" class="logo" />
     <h1>Rotaract Club of United Ranchi</h1>
     <p class="tagline">Empowering Youth • Serving the Community</p>
   </header>
 
   <main>
-    <!-- MISSION -->
+    <!-- Mission -->
     <section id="mission">
       <h2 class="section-title">Our Mission</h2>
-      <div class="mission">
-        We are committed to fostering leadership, service, and fellowship among youth in Ranchi.  
-        Our club organizes impactful projects that address education, environment, health, and community welfare — reflecting the Rotaract spirit of *“Service Above Self.”*
+      <div class="card mission">
+        We aim to unite the youth of Ranchi to create sustainable impact through community service, environmental action, and leadership development — carrying forward the Rotaract motto of <strong>“Service Above Self.”</strong>
       </div>
     </section>
 
-    <!-- PROJECTS -->
+    <!-- Projects -->
     <section id="projects">
-      <h2 class="section-title">Key Projects</h2>
+      <h2 class="section-title">Projects Showcase</h2>
       <div class="projects-grid">
-        <div class="project-card">
+        <div class="card project-card">
           <img src="https://source.unsplash.com/600x400/?tree,plantation" alt="Tree Plantation">
           <div class="content">
             <h3>Tree Plantation Drive</h3>
-            <p>Over 1,000 saplings planted to make Ranchi greener and healthier.</p>
+            <p>Planted over 1,000 saplings across Ranchi schools and community spaces.</p>
           </div>
         </div>
-        <div class="project-card">
+        <div class="card project-card">
           <img src="https://source.unsplash.com/600x400/?blood,donation" alt="Blood Donation">
           <div class="content">
             <h3>Blood Donation Camps</h3>
-            <p>Quarterly drives collecting over 500 units to save lives in local hospitals.</p>
+            <p>Organised quarterly drives collecting over 500 units of blood.</p>
           </div>
         </div>
-        <div class="project-card">
-          <img src="https://source.unsplash.com/600x400/?school,children" alt="Education Support">
+        <div class="card project-card">
+          <img src="https://source.unsplash.com/600x400/?education,children" alt="Education Support">
           <div class="content">
             <h3>Education for All</h3>
-            <p>Providing books and tutoring support for underprivileged children.</p>
+            <p>Provided books, uniforms, and mentoring to underprivileged students.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TEAM -->
+    <!-- Team -->
     <section id="team">
-      <h2 class="section-title">Meet Our Leaders</h2>
+      <h2 class="section-title">Our Leaders</h2>
       <div class="team-grid">
-        <div class="member-card">
+        <div class="card member-card">
           <img src="https://via.placeholder.com/150?text=Sahil+Kumar+Soni" alt="Sahil Kumar Soni">
           <h3>Sahil Kumar Soni</h3>
           <p class="role">Club President</p>
         </div>
-        <div class="member-card">
+        <div class="card member-card">
           <img src="https://via.placeholder.com/150?text=Vishwas+Kumar" alt="Vishwas Kumar">
           <h3>Vishwas Kumar</h3>
           <p class="role">Club Secretary</p>
         </div>
       </div>
     </section>
+
+    <!-- Media & Articles -->
+    <section id="media">
+      <h2 class="section-title">Media & Articles</h2>
+      <div class="media-list">
+        <div class="card media-card">
+          <h3>🌟 Youth Leadership Feature</h3>
+          <p><a href="https://medium.com/@exportsaraswat/mihir-saraswat-is-a-dynamic-young-leader-from-giridih-jharkhand-a44fafab1f99" target="_blank">Read Article on Medium</a></p>
+        </div>
+        <div class="card media-card">
+          <h3>📢 From Giridih to District Leadership</h3>
+          <p><a href="https://open.substack.com/pub/mihir65/p/from-giridih-to-district-leadership" target="_blank">Read on Substack</a></p>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- CONTACT -->
+  <!-- Footer -->
   <footer>
     <p>📍 Ranchi, Jharkhand, India</p>
     <p>✉️ Email: <a href="mailto:ranchirotaractclub@example.com">ranchirotaractclub@example.com</a></p>
@@ -240,7 +268,7 @@
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
