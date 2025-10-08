@@ -3,257 +3,242 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mihir Saraswat - Official Website</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <meta name="description" content="Official website of Mihir Saraswat, Youth Leader, Entrepreneur & District Council Coordinator, Rotaract District 3250." />
+  <title>Rotaract Club of United Ranchi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --brand: #FF046F;
-      --bg-dark: #181A1B;
-      --card-dark: #232428;
+      --primary: #c11f57;
+      --secondary: #f3f4f6;
+      --text: #222;
+      --light-text: #555;
       --white: #fff;
-      --accent-dark: #FF046F;
-      --font-head: 'Montserrat', sans-serif;
-      --font-body: 'Inter', sans-serif;
-      --radius: 18px;
-      --shadow: 0 8px 24px rgba(0,0,0,0.15);
-      --transition: 0.35s;
+      --radius: 14px;
+      --shadow: 0 6px 18px rgba(0,0,0,0.08);
     }
-    body {
-      background: var(--bg-dark);
-      color: var(--white);
-      font-family: var(--font-body);
-      min-height: 100vh;
-      margin: 0;
-      padding: 0;
+
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--secondary);
+      color:var(--text);
+      line-height:1.6;
     }
-    nav {
-      width: 100%;
-      background: transparent;
-      color: var(--white);
-      position: fixed;
-      top: 0; left: 0;
-      z-index: 999;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 38px;
-      height: 64px;
-      font-family: var(--font-head);
+
+    /* ---------- HEADER ---------- */
+    header{
+      background: linear-gradient(120deg,var(--primary),#d44a78);
+      color:var(--white);
+      text-align:center;
+      padding:70px 20px 80px;
+      position:relative;
+      overflow:hidden;
     }
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-      font-size: 1.07rem;
-      margin: 0;
-      padding: 0;
+    header::after{
+      content:"";
+      position:absolute;
+      bottom:-50px;
+      left:0;right:0;
+      height:100px;
+      background:var(--secondary);
+      clip-path: ellipse(75% 100% at 50% 100%);
     }
-    .nav-links li a {
-      color: var(--white);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color var(--transition);
+    header img.logo{
+      height:90px;
+      margin-bottom:15px;
     }
-    .nav-links li a:hover,
-    .nav-links li a:focus { color: var(--accent-dark); }
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 110px 48px 68px 48px;
-      gap: 38px;
-      max-width: 1100px;
-      margin: auto;
+    header h1{
+      font-size:2.8rem;
+      font-weight:700;
     }
-    .hero-text {
-      flex: 1.1;
+    header p.tagline{
+      margin-top:6px;
+      font-size:1.2rem;
+      opacity:.95;
     }
-    .hero-text h1 {
-      font-size: 2.8rem;
-      font-family: var(--font-head);
-      font-weight: 700;
-      margin-bottom: 22px;
-      line-height: 1.1;
+
+    main{
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 20px;
     }
-    .hero-text h1 .accent {
-      color: var(--accent-dark);
-      font-weight: 700;
+    section{
+      margin:80px 0;
     }
-    .hero-text p {
-      font-size: 1.07rem;
-      color: #b8b8b8;
-      margin-bottom: 24px;
-      font-family: var(--font-body);
+    h2.section-title{
+      text-align:center;
+      font-size:2rem;
+      margin-bottom:40px;
+      color:var(--primary);
     }
-    .social-links {
-      display: flex;
-      gap: 22px;
-      margin-bottom: 20px;
+
+    /* ---------- MISSION ---------- */
+    .mission{
+      background:var(--white);
+      padding:40px;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      text-align:center;
+      font-size:1.1rem;
+      max-width:900px;
+      margin:0 auto;
     }
-    .social-links a {
-      color: var(--accent-dark);
-      font-size: 1.35rem;
-      text-decoration: none;
-      transition: color var(--transition);
+
+    /* ---------- PROJECTS ---------- */
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:24px;
     }
-    .social-links a:hover { color: #fff; }
-    .skills-list {
-      display: flex;
-      gap: 22px;
-      margin-bottom: 18px;
-      font-size: 1.18rem;
+    .project-card{
+      background:var(--white);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      transition:transform .3s ease,box-shadow .3s ease;
     }
-    .hero-photo {
-      flex: 0.9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .project-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 10px 25px rgba(0,0,0,.15);
     }
-    .hero-photo img {
-      border-radius: 10px;
-      width: 260px;
-      height: 320px;
-      object-fit: cover;
-      box-shadow: var(--shadow);
-      background: #24242a;
-      border: 0;
+    .project-card img{
+      width:100%;
+      height:200px;
+      object-fit:cover;
     }
-    main {
-      max-width: 1100px;
-      margin: auto;
-      padding: 0 36px 60px;
-      display: block;
+    .project-card .content{
+      padding:18px;
     }
-    .card {
-      background: var(--card-dark);
-      border-radius: var(--radius);
-      padding: 28px 32px;
-      box-shadow: var(--shadow);
-      margin-bottom: 34px;
-      opacity: 1;
-      transform: none;
-      transition: background var(--transition), box-shadow var(--transition);
+    .project-card h3{
+      margin-bottom:6px;
+      color:var(--primary);
     }
-    .card h2 {
-      font-family: var(--font-head);
-      font-size: 1.6rem;
-      color: var(--accent-dark);
-      font-weight: 700;
-      margin-bottom: 13px;
+    .project-card p{
+      font-size:.95rem;
+      color:var(--light-text);
     }
-    .card p, .card ul li, .card .contact-grid div {
-      color: var(--white);
-      font-size: 1.03rem;
-      font-family: var(--font-body);
+
+    /* ---------- TEAM ---------- */
+    .team-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:28px;
+      justify-items:center;
     }
-    ul { list-style: none; padding-left: 0; }
-    ul li a {
-      color: var(--accent-dark);
-      font-weight: 600;
-      text-decoration: none;
-      transition: color var(--transition);
+    .member-card{
+      background:var(--white);
+      padding:24px 16px;
+      border-radius:var(--radius);
+      text-align:center;
+      box-shadow:var(--shadow);
+      width:260px;
     }
-    ul li a:hover, ul li a:focus { color: #fff; }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-      gap: 18px;
-      margin-top: 3px;
+    .member-card img{
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      object-fit:cover;
+      border:4px solid var(--primary);
+      margin-bottom:12px;
     }
-    .contact-grid div {
-      background: #15151d;
-      border-radius: var(--radius);
-      padding: 17px 22px;
-      font-size: 1rem;
-      color: #eee;
-      font-weight: 500;
+    .member-card h3{
+      font-size:1.2rem;
+      margin-bottom:4px;
     }
-    .contact-grid a {
-      color: var(--accent-dark);
-      text-decoration: none;
-      border-bottom: 1px solid var(--accent-dark);
-      transition: color var(--transition);
+    .member-card p.role{
+      font-size:.95rem;
+      color:var(--light-text);
     }
-    .contact-grid a:hover,
-    .contact-grid a:focus { color: #fff; border-bottom: 1px solid #fff; }
-    footer {
-      text-align: center;
-      padding: 24px 16px;
-      font-size: 0.9rem;
-      font-family: var(--font-body);
-      color: #999;
-      border-top: 1px solid #333;
+
+    /* ---------- CONTACT ---------- */
+    footer{
+      background:#111;
+      color:#ddd;
+      text-align:center;
+      padding:40px 20px;
     }
-    @media (max-width: 950px) {
-      .hero { flex-direction: column; gap: 12px; padding: 90px 24px 42px 24px;}
-      .hero-photo img { width: 200px; height: 260px;}
-      main { padding: 0 18px 40px; }
+    footer p{
+      margin:4px 0;
+      font-size:.9rem;
     }
-    @media (max-width: 680px) {
-      nav { padding: 0 16px; height: 54px; font-size: 1rem;}
-      .hero { padding: 75px 10px 28px 10px;}
+    footer a{
+      color:#fff;
+      text-decoration:none;
     }
+    footer a:hover{text-decoration:underline;}
   </style>
 </head>
 <body>
-  <nav>
-    <div style="font-size:1.28rem;font-weight:700;letter-spacing:.6px;">Mihir Saraswat</div>
-    <ul class="nav-links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#about-title">About</a></li>
-      <li><a href="#articles-title">Articles</a></li>
-      <li><a href="#contact-title">Contact</a></li>
-    </ul>
-  </nav>
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Hi, I’m <span class="accent">Mihir Saraswat</span><br> a Youth Leader & Entrepreneur.</h1>
-      <p>District Council Coordinator, Rotaract District 3250 <br/> Co-owner, MM Medicine & MM Ayurveda</p>
-      <div class="social-links">
-        <a href="mailto:exportsaraswat@gmail.com" title="Email" aria-label="Email">&#128231;</a>
-        <a href="https://instagram.com/mihir_saraswat" target="_blank" aria-label="Instagram">&#128248;</a>
-        <a href="https://www.linkedin.com/in/mihir-saraswat-79b077200" target="_blank" aria-label="LinkedIn">&#128188;</a>
-      </div>
-      <div class="skills-list">
-        <span title="Community">🧑‍🤝‍🧑</span>
-        <span title="Leadership">🌟</span>
-        <span title="Entrepreneurship">🚀</span>
-      </div>
-    </div>
-    <div class="hero-photo">
-      <img src="https://open.substack.com/public/images/mihir-profile.jpg" alt="Portrait of Mihir Saraswat" loading="lazy" />
-    </div>
-  </section>
+
+  <!-- HEADER -->
+  <header>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Rotaract_Emblem.png/200px-Rotaract_Emblem.png" alt="Rotaract Logo" class="logo"/>
+    <h1>Rotaract Club of United Ranchi</h1>
+    <p class="tagline">Empowering Youth • Serving the Community</p>
+  </header>
+
   <main>
-    <section class="card" tabindex="0" aria-labelledby="about-title">
-      <h2 id="about-title">About Mihir</h2>
-      <p>
-        Born 26 April 1997 in Giridih, Jharkhand, <strong>Mihir Saraswat</strong> is a youth leader, social entrepreneur and community organiser.
-        He currently serves as District Council Coordinator (2025–26) of <em>Rotaract District 3250</em>, and is co-owner of MM Medicine & MM Ayurveda.
-        Mihir has held several district and club roles and won multiple awards for service and PR leadership.
-      </p>
+    <!-- MISSION -->
+    <section id="mission">
+      <h2 class="section-title">Our Mission</h2>
+      <div class="mission">
+        We are committed to fostering leadership, service, and fellowship among youth in Ranchi.  
+        Our club organizes impactful projects that address education, environment, health, and community welfare — reflecting the Rotaract spirit of *“Service Above Self.”*
+      </div>
     </section>
-    <section class="card" tabindex="0" aria-labelledby="articles-title">
-      <h2 id="articles-title">Featured articles &amp; press</h2>
-      <ul>
-        <li><a href="https://open.substack.com/pub/mihir65/p/from-giridih-to-district-leadership" target="_blank">From Giridih to District Leadership — Substack</a></li>
-        <li><a href="https://medium.com/@exportsaraswat/mihir-saraswat-is-a-dynamic-young-leader-from-giridih-jharkhand-a44fafab1f99" target="_blank">A Dynamic Young Leader — Medium</a></li>
-      </ul>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2 class="section-title">Key Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="https://source.unsplash.com/600x400/?tree,plantation" alt="Tree Plantation">
+          <div class="content">
+            <h3>Tree Plantation Drive</h3>
+            <p>Over 1,000 saplings planted to make Ranchi greener and healthier.</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="https://source.unsplash.com/600x400/?blood,donation" alt="Blood Donation">
+          <div class="content">
+            <h3>Blood Donation Camps</h3>
+            <p>Quarterly drives collecting over 500 units to save lives in local hospitals.</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="https://source.unsplash.com/600x400/?school,children" alt="Education Support">
+          <div class="content">
+            <h3>Education for All</h3>
+            <p>Providing books and tutoring support for underprivileged children.</p>
+          </div>
+        </div>
+      </div>
     </section>
-    <section class="card" tabindex="0" aria-labelledby="contact-title">
-      <h2 id="contact-title">Contact</h2>
-      <div class="contact-grid">
-        <div>Email: <a href="mailto:exportsaraswat@gmail.com">exportsaraswat@gmail.com</a></div>
-        <div>Phone: <a href="tel:+916203671813">+91 62036 71813</a></div>
-        <div>Instagram: <a href="https://instagram.com/mihir_saraswat" target="_blank">@mihir_saraswat</a></div>
-        <div>LinkedIn: <a href="https://www.linkedin.com/in/mihir-saraswat-79b077200" target="_blank">Mihir Saraswat</a></div>
+
+    <!-- TEAM -->
+    <section id="team">
+      <h2 class="section-title">Meet Our Leaders</h2>
+      <div class="team-grid">
+        <div class="member-card">
+          <img src="https://via.placeholder.com/150?text=Sahil+Kumar+Soni" alt="Sahil Kumar Soni">
+          <h3>Sahil Kumar Soni</h3>
+          <p class="role">Club President</p>
+        </div>
+        <div class="member-card">
+          <img src="https://via.placeholder.com/150?text=Vishwas+Kumar" alt="Vishwas Kumar">
+          <h3>Vishwas Kumar</h3>
+          <p class="role">Club Secretary</p>
+        </div>
       </div>
     </section>
   </main>
+
+  <!-- CONTACT -->
   <footer>
-    <small>© <span id="year"></span> Mihir Saraswat — All rights reserved.</small>
+    <p>📍 Ranchi, Jharkhand, India</p>
+    <p>✉️ Email: <a href="mailto:ranchirotaractclub@example.com">ranchirotaractclub@example.com</a></p>
+    <p>© <span id="year"></span> Rotaract Club of United Ranchi. All Rights Reserved.</p>
   </footer>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
